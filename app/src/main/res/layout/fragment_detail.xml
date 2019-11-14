@@ -3,13 +3,33 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.lemycanh.citycriminal.DetailFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:gravity="center"
-        android:id="@+id/tv_message"
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Message will be displayed here" />
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tv_problem_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
+        <TextView
+            android:layout_marginTop="5dp"
+            android:id="@+id/tv_problem_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_marginTop="5dp"
+            android:id="@+id/tv_problem_timestamp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <CheckBox
+            android:layout_marginTop="5dp"
+            android:id="@+id/ck_problem_resolved"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Resolved"/>
+    </LinearLayout>
 </FrameLayout>
