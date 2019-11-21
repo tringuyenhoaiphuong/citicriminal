@@ -48,7 +48,7 @@ public class ListFragment extends Fragment {
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void OnProblemUpdated(ProblemUpdatedEvent event) {
         mRvProblems.getAdapter().notifyDataSetChanged();
-        mRvProblems.invalidate();
+//        mRvProblems.invalidate();
     }
 
 
