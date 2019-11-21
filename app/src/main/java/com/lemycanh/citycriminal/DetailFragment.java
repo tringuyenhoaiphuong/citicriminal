@@ -27,6 +27,7 @@ public class DetailFragment extends Fragment {
     private TextView mTvContent;
     private TextView mTvTimestamp;
     private CheckBox mCkResolved;
+    private Problem problem;
 
     public DetailFragment() {
         // Required empty public constructor
@@ -34,7 +35,7 @@ public class DetailFragment extends Fragment {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent(MessageEvent event) {
-        Problem problem = event.getProblem();
+        problem = event.getProblem();
         mTvTitle.setText(problem.getTitle());
         mTvContent.setText(problem.getContent());
 
@@ -54,6 +55,11 @@ public class DetailFragment extends Fragment {
         this.mTvContent = view.findViewById(R.id.tv_problem_content);
         this.mTvTimestamp = view.findViewById(R.id.tv_problem_timestamp);
         this.mCkResolved = view.findViewById(R.id.ck_problem_resolved);
+
+        this.mCkResolved.setOnClickListener(v -> {
+            problem.setResolved(mCkResolved.isChecked());
+            EventBus.getDefault().post(new ProblemUpdatedEvent(problem));
+        });
         return view;
     }
 

@@ -3,6 +3,7 @@ package com.lemycanh.citycriminal;
 
 import android.os.Bundle;
 import android.app.Fragment;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,8 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 
 /**
@@ -19,11 +22,7 @@ import org.greenrobot.eventbus.EventBus;
  */
 public class ListFragment extends Fragment {
 
-    ListView mLvProblems;
-    private AdapterView.OnItemClickListener onItemClickListener = (parent, view, position, id) -> {
-        Problem problem = (Problem) mLvProblems.getAdapter().getItem(position);
-        EventBus.getDefault().post(new MessageEvent(problem));
-    };
+    RecyclerView mRvProblems;
 
     public ListFragment() {
         // Required empty public constructor
@@ -39,10 +38,29 @@ public class ListFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_list, container, false);
-        mLvProblems = view.findViewById(R.id.lv_problems);
-        mLvProblems.setAdapter(new ProblemAdapter(getActivity()));
-        mLvProblems.setOnItemClickListener(this.onItemClickListener);
+
+        mRvProblems = view.findViewById(R.id.rv_problems);
+        ProblemAdapter2 adapter2 = new ProblemAdapter2(getActivity());
+        mRvProblems.setAdapter(adapter2);
         return view;
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void OnProblemUpdated(ProblemUpdatedEvent event) {
+        mRvProblems.getAdapter().notifyDataSetChanged();
+        mRvProblems.invalidate();
+    }
+
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+    }
 }

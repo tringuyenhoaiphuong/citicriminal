@@ -2,7 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.lemycanh.citycriminal.DetailFragment">
+    tools:context="com.lemycanh.citycriminal.DetailFragment"
+    android:padding="10dp">
     <LinearLayout
         android:orientation="vertical"
         android:layout_gravity="center"

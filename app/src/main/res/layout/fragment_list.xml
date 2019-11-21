@@ -2,12 +2,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.lemycanh.citycriminal.ListFragment">
 
-   <ListView
-       android:id="@+id/lv_problems"
+   <android.support.v7.widget.RecyclerView
+       app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+       android:id="@+id/rv_problems"
        android:layout_width="match_parent"
        android:layout_height="match_parent"
-       android:dividerHeight="5dp"></ListView>
+       android:dividerHeight="5dp"></android.support.v7.widget.RecyclerView>
 
 </FrameLayout>
