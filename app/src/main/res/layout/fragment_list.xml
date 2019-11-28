@@ -5,11 +5,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.lemycanh.citycriminal.ListFragment">
 
-   <android.support.v7.widget.RecyclerView
-       app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+   <androidx.recyclerview.widget.RecyclerView
+       app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
        android:id="@+id/rv_problems"
        android:layout_width="match_parent"
        android:layout_height="match_parent"
-       android:dividerHeight="5dp"></android.support.v7.widget.RecyclerView>
+       android:dividerHeight="5dp"></androidx.recyclerview.widget.RecyclerView>
 
 </FrameLayout>

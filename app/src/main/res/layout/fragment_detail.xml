@@ -9,6 +9,16 @@
         android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/iv_evident"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"></ImageView>
+
+        <Button
+            android:id="@+id/btn_takepicture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Take a picture"></Button>
         <TextView
             android:id="@+id/tv_problem_title"
             android:layout_width="match_parent"
